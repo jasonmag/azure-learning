@@ -1,5 +1,9 @@
 ## Use Azure Key Vault to pass secure parameter value during Bicep deployment
-<img src="https://raw.githubusercontent.com/benc-uk/icon-collection/master/other/bicep.svg" alt="Bicep Logo" width="100">
+
+<div style="display: flex; align-items: center;">
+  <img src="https://raw.githubusercontent.com/benc-uk/icon-collection/master/other/bicep.svg" alt="Bicep Logo" width="100">
+  <img src="https://raw.githubusercontent.com/benc-uk/icon-collection/master/azure-icons/Key-Vaults.svg" alt="Key Vault Logo" width="100">
+</div>
 
 [Reference](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/key-vault-parameter?tabs=azure-cli)
 

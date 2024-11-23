@@ -2,8 +2,10 @@
 
 # Variables
 RESOURCE_GROUP="<YourResourceGroupName>" # Replace with your resource group name
-LOCATION="<YourAzureRegion>" # Replace with your desired Azure region (e.g., eastus, westus2)
+LOCATION="australiaeast" # Replace with your desired Azure region (e.g., eastus, westus2)
 TEMPLATE_FILE="main.bicep" # Replace with the path to your Bicep file
+ENVIRONMENT="dev" # Replace with environment 3 letter word rule (dev/tst/stg/prd)
+PARAM_FILE="main.$ENVIRONMENT.bicepparam" # Replace with the path to your parameter file
 DEPLOYMENT_NAME="deployment-$(date +%Y%m%d%H%M%S)" # Unique deployment name
 
 # Check if Azure CLI is installed
@@ -13,7 +15,7 @@ if ! command -v az &> /dev/null; then
 fi
 
 # Check if Bicep is installed
-if ! az bicep &> /dev/null; then
+if ! az bicep version &> /dev/null; then
     echo "Bicep CLI is not installed. Installing now..."
     az bicep install
 fi
@@ -30,12 +32,13 @@ if ! az group show --name "$RESOURCE_GROUP" &> /dev/null; then
     az group create --name "$RESOURCE_GROUP" --location "$LOCATION"
 fi
 
-# Deploy the Bicep file
-echo "Deploying $TEMPLATE_FILE to resource group $RESOURCE_GROUP..."
+# Deploy the Bicep file with parameter file
+echo "Deploying $TEMPLATE_FILE with parameters $PARAM_FILE to resource group $RESOURCE_GROUP..."
 az deployment group create \
     --name "$DEPLOYMENT_NAME" \
     --resource-group "$RESOURCE_GROUP" \
-    --template-file "$TEMPLATE_FILE"
+    --template-file "$TEMPLATE_FILE" \
+    --parameters "$PARAM_FILE"
 
 # Check the deployment status
 if [ $? -eq 0 ]; then

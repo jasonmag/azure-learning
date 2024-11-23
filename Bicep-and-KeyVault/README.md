@@ -30,3 +30,7 @@
     ```bash
     az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
     ```
+
+### NOTE
+
+Create a `.bicepparam` for general deployment file, but when deploying copy same file and rename into `main.dev.bicepparam` and replace desired values for Dev environment. Do the same with Staging and Production.

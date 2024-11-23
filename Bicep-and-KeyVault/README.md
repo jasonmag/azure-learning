@@ -1,4 +1,5 @@
 ## Use Azure Key Vault to pass secure parameter value during Bicep deployment
+<img src="https://raw.githubusercontent.com/benc-uk/icon-collection/master/other/bicep.svg" alt="Bicep Logo" width="100">
 
 [Reference](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/key-vault-parameter?tabs=azure-cli)
 
@@ -18,7 +19,7 @@ az keyvault create \
   --enabled-for-template-deployment true
 ```
 
-3. Create Secret to KeyVault
+3. Create Secret to KeyVault.
 
 ```bash
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
